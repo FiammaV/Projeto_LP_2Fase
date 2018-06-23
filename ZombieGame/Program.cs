@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ZombieGame {
     class Program {
         static void Main(string[] args) {
-            
+            //hi friend
         }
     }
 }
