@@ -6,15 +6,43 @@ using System.Threading.Tasks;
 
 namespace ZombieGame {
     class Config {
-        public string InitialHumans { get; }
-        public string InitialZombies { get; }
-        public Config[,] command = ["-x", "-y", "-h", "-z", "-H", "-Z", "-t"];
+        public string ControlHumans { get; set; }
+        public string InitialZombies { get; set; }
+        public string WorldX { get; set; }
+        public string WorldY { get; set; }
+        public string ControlHuman { get; set; }
+        public string ControlZombies { get; set; }
+        public string MaxT { get; set; }
+        public string[] args = new string[] { "-x", "8", "-y", "8", "-h", "2",
+            "-z", "20", "-H", "1", "-Z", "1", "-t", "20" };
 
-        public Config (string[] args) {
+        public Config(string[] args) {
             for (int i = 0; i < args.Length; i += 2) {
                 switch (args[i]) {
+                    case "-x":
+                        WorldX = (args[i + 1]);
+                        break;
+                    case "-y":
+                        WorldY = (args[i + 1]);
+                        break;
                     case "-h":
-                        InitialHumans = Convert.ToInt32(args[i + 1]);
+                        ControlHumans = (args[i + 1]);
+                        break;
+                    case "-z":
+                        InitialZombies = (args[i + 1]);
+                        break;
+                    case "-H":
+                        ControlHumans = (args[i + 1]);
+                        break;
+                    case "-Z":
+                        ControlZombies = (args[i + 1]);
+                        break;
+                    case "-t":
+                        MaxT = (args[i + 1]);
+                        break;
+                    default:
+                        Console.WriteLine("You've done goof");
+                        break;
                 }
             }
         }
