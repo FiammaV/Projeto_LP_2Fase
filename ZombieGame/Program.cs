@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace ZombieGame {
     class Program {
         static void Main(string[] args) {
+            Config c = new Config(args);
+
             
         }
     }
