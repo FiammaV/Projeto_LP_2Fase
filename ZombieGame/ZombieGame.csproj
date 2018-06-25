@@ -45,7 +45,9 @@
     <Compile Include="Agent.cs" />
     <Compile Include="AgentType.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Empty.cs" />
     <Compile Include="GameManager.cs" />
+    <Compile Include="IGameObject.cs" />
     <Compile Include="Interface.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
