@@ -9,13 +9,13 @@ namespace ZombieGame {
         /// <summary>
         /// Proprieties of each argument
         /// </summary>
-        public string InitialHumans { get; set; }
-        public string InitialZombies { get; set; }
-        public string WorldX { get; set; }
-        public string WorldY { get; set; }
-        public string ControlHumans { get; set; }
-        public string ControlZombies { get; set; }
-        public string MaxT { get; set; }
+        public string InitialHumans { get; }
+        public string InitialZombies { get; }
+        public string WorldX { get; }
+        public string WorldY { get; }
+        public string ControlHumans { get; }
+        public string ControlZombies { get; }
+        public string MaxT { get; }
         //public string[] args = new string[] { "-x", "8", "-y", "8", "-h", "2",
         //    "-z", "20", "-H", "1", "-Z", "1", "-t", "1000" };
 
