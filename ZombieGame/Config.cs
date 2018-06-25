@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 namespace ZombieGame {
     public class Config {
         /// <summary>
-        /// Proprieties of each argument
+        /// Properties of each argument
         /// </summary>
-        public string InitialHumans { get; set; }
-        public string InitialZombies { get; set; }
-        public string WorldX { get; set; }
-        public string WorldY { get; set; }
-        public string ControlHumans { get; set; }
-        public string ControlZombies { get; set; }
-        public string MaxT { get; set; }
+        public int InitialHumans { get; set; }
+        public int InitialZombies { get; set; }
+        public int Row { get; set; }
+        public int Column { get; set; }
+        public int ControlHumans { get; set; }
+        public int ControlZombies { get; set; }
+        public int MaxT { get; set; }
+        public IGameObject[,] grid;
+
         //public string[] args = new string[] { "-x", "8", "-y", "8", "-h", "2",
         //    "-z", "20", "-H", "1", "-Z", "1", "-t", "1000" };
 
@@ -24,38 +26,52 @@ namespace ZombieGame {
             for (int i = 0; i < args.Length; i += 2) {
                 switch (args[i]) {
                     case "-x":
-                        WorldX = (args[i + 1]);
-                        Console.WriteLine(WorldX);
+                        Row = Convert.ToInt32(args[i + 1]);
+                        Console.WriteLine(Row);
                         break;
                     case "-y":
-                        WorldY = (args[i + 1]);
-                        Console.WriteLine(WorldY);
+                        Column = Convert.ToInt32(args[i + 1]);
+                        Console.WriteLine(Column);
                         break;
                     case "-h":
-                        InitialHumans = (args[i + 1]);
+                        InitialHumans = Convert.ToInt32(args[i + 1]);
                         Console.WriteLine(InitialHumans);
                         break;
                     case "-z":
-                        InitialZombies = (args[i + 1]);
+                        InitialZombies = Convert.ToInt32(args[i + 1]);
                         Console.WriteLine(InitialZombies);
                         break;
                     case "-H":
-                        ControlHumans = (args[i + 1]);
+                        ControlHumans = Convert.ToInt32(args[i + 1]);
                         Console.WriteLine(ControlHumans);
                         break;
                     case "-Z":
-                        ControlZombies = (args[i + 1]);
+                        ControlZombies = Convert.ToInt32(args[i + 1]);
                         Console.WriteLine(ControlZombies);
                         break;
                     case "-t":
-                        MaxT = (args[i + 1]);
+                        MaxT = Convert.ToInt32(args[i + 1]);
                         Console.WriteLine(MaxT);
                         break;
                     default:
-                        Console.WriteLine("You've done goof");
+                        Console.WriteLine("You've done gridof");
                         break;
                 }
             }
+
+            grid = new IGameObject[Row, Column];
+
+            for(int i = 0; i < grid.GetLength(0); i++)
+            {
+                for (int j = 0; j < grid.GetLength(1); j++)
+                {
+                    grid[i, j] = new Empty();
+                }
+
+            }
+
+            Interface it = new Interface();
+            it.ShowWorld(grid);
         }
     }
 }
