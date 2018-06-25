@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace ZombieGame {
     class Config {
-        public string ControlHumans { get; set; }
+        public string InitialHumans { get; set; }
         public string InitialZombies { get; set; }
         public string WorldX { get; set; }
         public string WorldY { get; set; }
-        public string ControlHuman { get; set; }
+        public string ControlHumans { get; set; }
         public string ControlZombies { get; set; }
         public string MaxT { get; set; }
         public string[] args = new string[] { "-x", "8", "-y", "8", "-h", "2",
-            "-z", "20", "-H", "1", "-Z", "1", "-t", "20" };
+            "-z", "20", "-H", "1", "-Z", "1", "-t", "1000" };
 
         public Config(string[] args) {
             for (int i = 0; i < args.Length; i += 2) {
@@ -28,8 +28,8 @@ namespace ZombieGame {
                         Console.WriteLine(WorldY);
                         break;
                     case "-h":
-                        ControlHumans = (args[i + 1]);
-                        Console.WriteLine(ControlHumans);
+                        InitialHumans = (args[i + 1]);
+                        Console.WriteLine(InitialHumans);
                         break;
                     case "-z":
                         InitialZombies = (args[i + 1]);
@@ -37,7 +37,7 @@ namespace ZombieGame {
                         break;
                     case "-H":
                         ControlHumans = (args[i + 1]);
-                        Console.WriteLine(ControlHuman);
+                        Console.WriteLine(ControlHumans);
                         break;
                     case "-Z":
                         ControlZombies = (args[i + 1]);
