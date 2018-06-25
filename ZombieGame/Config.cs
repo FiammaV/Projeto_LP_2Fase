@@ -9,13 +9,13 @@ namespace ZombieGame {
         /// <summary>
         /// Proprieties of each argument
         /// </summary>
-        public string InitialHumans { get; }
-        public string InitialZombies { get; }
-        public string WorldX { get; }
-        public string WorldY { get; }
-        public string ControlHumans { get; }
-        public string ControlZombies { get; }
-        public string MaxT { get; }
+        public int InitialHumans { get; }
+        public int InitialZombies { get; }
+        public int Row { get; }
+        public int Column { get; }
+        public int ControlHumans { get; }
+        public int ControlZombies { get; }
+        public int MaxT { get; }
         //public string[] args = new string[] { "-x", "8", "-y", "8", "-h", "2",
         //    "-z", "20", "-H", "1", "-Z", "1", "-t", "1000" };
 
@@ -24,32 +24,25 @@ namespace ZombieGame {
             for (int i = 0; i < args.Length; i += 2) {
                 switch (args[i]) {
                     case "-x":
-                        WorldX = (args[i + 1]);
-                        Console.WriteLine(WorldX);
+                        Row = Convert.ToInt32(args[i + 1]);
                         break;
                     case "-y":
-                        WorldY = (args[i + 1]);
-                        Console.WriteLine(WorldY);
+                        Column = Convert.ToInt32(args[i + 1]);
                         break;
                     case "-h":
-                        InitialHumans = (args[i + 1]);
-                        Console.WriteLine(InitialHumans);
+                        InitialHumans = Convert.ToInt32(args[i + 1]);
                         break;
                     case "-z":
-                        InitialZombies = (args[i + 1]);
-                        Console.WriteLine(InitialZombies);
+                        InitialZombies = Convert.ToInt32(args[i + 1]);
                         break;
                     case "-H":
-                        ControlHumans = (args[i + 1]);
-                        Console.WriteLine(ControlHumans);
+                        ControlHumans = Convert.ToInt32(args[i + 1]);
                         break;
                     case "-Z":
-                        ControlZombies = (args[i + 1]);
-                        Console.WriteLine(ControlZombies);
+                        ControlZombies = Convert.ToInt32(args[i + 1]);
                         break;
                     case "-t":
-                        MaxT = (args[i + 1]);
-                        Console.WriteLine(MaxT);
+                        MaxT = Convert.ToInt32(args[i + 1]);
                         break;
                     default:
                         Console.WriteLine("You've done goof");
