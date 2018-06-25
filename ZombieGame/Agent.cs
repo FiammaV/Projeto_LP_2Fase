@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZombieGame
-{
-    class Agent
-    {
+namespace ZombieGame {
+    class Agent {
 
     }
 }
