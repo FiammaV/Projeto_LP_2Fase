@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ZombieGame {
-    class Config {
+    public class Config {
+        /// <summary>
+        /// Proprieties of each argument
+        /// </summary>
         public string InitialHumans { get; set; }
         public string InitialZombies { get; set; }
         public string WorldX { get; set; }
@@ -17,6 +20,7 @@ namespace ZombieGame {
         //    "-z", "20", "-H", "1", "-Z", "1", "-t", "1000" };
 
         public Config(string[] args) {
+            // A for that will run through the arguments' array
             for (int i = 0; i < args.Length; i += 2) {
                 switch (args[i]) {
                     case "-x":
