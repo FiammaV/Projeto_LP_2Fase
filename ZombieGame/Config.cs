@@ -13,8 +13,8 @@ namespace ZombieGame {
         public string ControlHumans { get; set; }
         public string ControlZombies { get; set; }
         public string MaxT { get; set; }
-        public string[] args = new string[] { "-x", "8", "-y", "8", "-h", "2",
-            "-z", "20", "-H", "1", "-Z", "1", "-t", "1000" };
+        //public string[] args = new string[] { "-x", "8", "-y", "8", "-h", "2",
+        //    "-z", "20", "-H", "1", "-Z", "1", "-t", "1000" };
 
         public Config(string[] args) {
             for (int i = 0; i < args.Length; i += 2) {
