@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ZombieGame {
-    class UserInterface {
+    public class UserInterface {
         public void ShowWorld(IGameObject[,] grid) {
             char state = ' ';
             for (int i = 0; i < grid.GetLength(0); i++) {
