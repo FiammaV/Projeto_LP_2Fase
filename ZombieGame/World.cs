@@ -46,6 +46,7 @@ namespace ZombieGame
                 Column = Convert.ToInt32(rnd);
                 grid[Row, Column] = a;
             }
+
         }
     }
 }
