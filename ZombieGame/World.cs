@@ -4,16 +4,14 @@ namespace ZombieGame
 {
     public class World
     {
-
         private IGameObject[] agents;
         private IGameObject[,] grid;
         public int Row { get; }
         public int Column { get; }
-        
+        Random rnd = new Random();
+
         public World(Config c)
         {
-            Random rnd = new Random();
-
             agents = new IGameObject[c.InitialHumans + c.InitialZombies];
 
             grid = new IGameObject[Row, Column];
@@ -47,6 +45,16 @@ namespace ZombieGame
                 grid[Row, Column] = a;
             }
 
+        }
+        // Fisher Yates method
+        public void Shuffle()
+        {
+            for (int i = agents.Length - 1; i > 0; i--) {
+                int j = rnd.Next(i + 1);
+                Agent temp = (Agent)agents[i];
+                agents[i] = agents[j];
+                agents[j] = temp;
+            }
         }
     }
 }
