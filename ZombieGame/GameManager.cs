@@ -13,8 +13,9 @@ namespace ZombieGame {
             config = c;
         }
 
-        public void Start() {
-            World w = new World(c);
+        public void Start()
+        {
+            World world = new World(c);
         }
     }
 }
