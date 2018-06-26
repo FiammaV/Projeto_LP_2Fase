@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ZombieGame {
+    /// <summary>
+    /// Empty implement IGameObject
+    /// </summary>
     class Empty : IGameObject {
     }
 }
