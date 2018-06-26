@@ -8,6 +8,6 @@ namespace ZombieGame {
     /// <summary>
     /// Empty implement IGameObject
     /// </summary>
-    class Empty : IGameObject {
+    public class Empty : IGameObject {
     }
 }
