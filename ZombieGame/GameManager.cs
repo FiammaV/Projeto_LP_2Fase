@@ -10,6 +10,12 @@ namespace ZombieGame {
 
         public int MaxT { get; }
 
+        //construtor 
+        public GameManager()
+        {
+            Menu menu = new Menu();
+        }
+
         public GameManager (Config c) {
             config = c;
         }
