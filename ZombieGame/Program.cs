@@ -13,10 +13,9 @@ namespace ZombieGame {
 
             Config c = new Config(args);
 
-            GameManager game = new GameManager(c);
-
             // Declaration/ initiate the menu
-            Menu menu = new Menu();
+            Menu menu = new Menu(c);
+            Console.OutputEncoding = Encoding.UTF8;
 
             // Initiate DrawMenu
             menu.DrawMenu();
