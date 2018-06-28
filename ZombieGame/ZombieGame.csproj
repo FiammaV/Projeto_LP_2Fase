@@ -48,6 +48,7 @@
     <Compile Include="Empty.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="IGameObject.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="UserInterface.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
