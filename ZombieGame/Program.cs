@@ -10,12 +10,12 @@ namespace ZombieGame {
     /// </summary>
     public class Program {
         static void Main(string[] args) {
+            Console.OutputEncoding = Encoding.UTF8;
 
             Config c = new Config(args);
 
             // Declaration/ initiate the menu
             Menu menu = new Menu(c);
-            Console.OutputEncoding = Encoding.UTF8;
 
             // Initiate DrawMenu
             menu.DrawMenu();
