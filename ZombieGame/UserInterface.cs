@@ -13,6 +13,7 @@ namespace ZombieGame {
 
         // Renders the grid
         public void ShowWorld(IGameObject[,] grid) {
+            Console.Clear();
             for (int i = 0; i < grid.GetLength(0); i++) {
                 for (int j = 0; j < grid.GetLength(1); j++) {
                     Console.Write(State(grid[i, j]));
