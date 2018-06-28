@@ -18,6 +18,7 @@ namespace ZombieGame {
         // Empty constructor 
         public Agent(AgentType agent)
         {
+            Type = agent;
         }
     }
 }
