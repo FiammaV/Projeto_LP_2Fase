@@ -14,7 +14,12 @@ namespace ZombieGame {
             Config c = new Config(args);
 
             GameManager game = new GameManager(c);
-            game.GameLoop();
+
+            // Declaration/ initiate the menu
+            Menu menu = new Menu();
+
+            // Initiate DrawMenu
+            menu.DrawMenu();
         }
     }
 }
