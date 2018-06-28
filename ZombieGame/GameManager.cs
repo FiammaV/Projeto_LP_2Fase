@@ -9,6 +9,7 @@ namespace ZombieGame {
         private Config config;
         private World world;
         private UserInterface it;
+        private AI ai;
 
         public int MaxT { get; }
 
@@ -17,13 +18,14 @@ namespace ZombieGame {
             config = c;
             world = new World(c);
             it = new UserInterface();
-            world.Shuffle();
+            ai = new AI(c, world);
         }
 
         public void GameLoop()
         {
             do {
                 it.ShowWorld(world.Grid);
+                ai.SearchAgent();
                 Console.ReadKey();
             } while (2 != 3);
         }
