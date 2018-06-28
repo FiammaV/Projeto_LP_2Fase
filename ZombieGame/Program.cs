@@ -15,11 +15,6 @@ namespace ZombieGame {
 
             GameManager game = new GameManager(c);
 
-            // Declaration/ initiate the menu
-            Menu menu = new Menu();
-
-            // Initiate DrawMenu
-            menu.DrawMenu();
         }
     }
 }

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace ZombieGame {
     public class GameManager {
         private Config config;
+        private World world;
+        private UserInterface it;
 
         public int MaxT { get; }
 
@@ -18,20 +20,17 @@ namespace ZombieGame {
 
         public GameManager (Config c) {
             config = c;
+            world = new World(c);
+            it = new UserInterface();
+            world.Shuffle();
         }
 
-        public void Start(Config c)
+        public void GameLoop()
         {
-            World world = new World(c);
-        }
-
-        private void GameLoop(World world, UserInterface it, IGameObject[,] grid)
-        {
-            for (int i = 0; (i > MaxT) || (AgentType.Human == 0);)
-            {
-                world.Shuffle();
-                it.ShowWorld(grid);
-            }
+            do {
+                it.ShowWorld(world.Grid);
+                Console.ReadKey();
+            } while (2 != 3);
         }
     }
 }
