@@ -24,13 +24,13 @@ namespace ZombieGame
         {
             // Clear console
             Console.Clear();
-            Console.WriteLine(" ╓━━━━━━━━━━━━━━━━━━━━━━━╖");
-            Console.WriteLine(" ║   Zombie Apocalypse   ║");
-            Console.WriteLine(" ║━━━━━━━━━━━━━━━━━━━━━━━║");
-            Console.WriteLine(" ║      1  Game          ║");
-            Console.WriteLine(" ║      2  Credits       ║");
-            Console.WriteLine(" ║      3  Exit          ║");
-            Console.WriteLine(" ╙━━━━━━━━━━━━━━━━━━━━━━━╜");
+            Console.WriteLine(" ╓━━━━━━━━━━━━━━━━━━━━━━━━━━╖");
+            Console.WriteLine(" ║     ZombieApocalypse     ║");
+            Console.WriteLine(" ║━━━━━━━━━━━━━━━━━━━━━━━━━━║");
+            Console.WriteLine(" ║      1  Game     ♚      ║");
+            Console.WriteLine(" ║      2  Credits  ☰      ║");
+            Console.WriteLine(" ║      3  Exit     ✈      ║");
+            Console.WriteLine(" ╙━━━━━━━━━━━━━━━━━━━━━━━━━━╜");
 
             // Return the string of method "Options"
             Options(Console.ReadLine());
@@ -57,13 +57,13 @@ namespace ZombieGame
         public void Credits()
         {
             Console.Clear();
-            Console.WriteLine(" ╓━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╖");
-            Console.WriteLine(" ║            Credits            ║");
-            Console.WriteLine(" ║━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━║");
-            Console.WriteLine(" ║  Inês Gonçalves  nº21702076   ║");
-            Console.WriteLine(" ║  Inês Nunes      nº21702520   ║");
-            Console.WriteLine(" ║  Sara Gama       nº21705494   ║");
-            Console.WriteLine(" ╙━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╜");
+            Console.WriteLine(" ╓━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╖");
+            Console.WriteLine(" ║              Credits            ║");
+            Console.WriteLine(" ║━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━║");
+            Console.WriteLine(" ║  ♫  Inês Gonçalves  nº21702076  ║");
+            Console.WriteLine(" ║  ♪  Inês Nunes      nº21702520  ║");
+            Console.WriteLine(" ║  ♫  Sara Gama       nº21705494  ║");
+            Console.WriteLine(" ╙━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╜");
             // Reads the input of the player
             Console.ReadKey();
         }
