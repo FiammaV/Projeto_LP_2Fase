@@ -12,12 +12,12 @@ namespace ZombieGame
     class Menu
     {
         // Declaration of the game
-        GameManager gameManager;
+        private GameManager gameManager;
 
         // Contructor iniciates the game (nao devolve nada MAS pode receber se tiveres cenas entre parentises)
-        public Menu()
+        public Menu(Config c)
         {
-            gameManager = new GameManager();
+            gameManager = new GameManager(c);
         }
 
         public void DrawMenu()
@@ -26,11 +26,11 @@ namespace ZombieGame
             Console.Clear();
             Console.WriteLine(" ╓━━━━━━━━━━━━━━━━━━━━━━━━━━╖");
             Console.WriteLine(" ║     ZombieApocalypse     ║");
-            Console.WriteLine(" ║━━━━━━━━━━━━━━━━━━━━━━━━━━║");
-            Console.WriteLine(" ║      1  Game     ♚      ║");
-            Console.WriteLine(" ║      2  Credits  ☰      ║");
-            Console.WriteLine(" ║      3  Exit     ✈      ║");
-            Console.WriteLine(" ╙━━━━━━━━━━━━━━━━━━━━━━━━━━╜");
+            Console.WriteLine(" ║˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭║");
+            Console.WriteLine(" ║      1  Game     ♚       ║");
+            Console.WriteLine(" ║      2  Credits  ☰       ║");
+            Console.WriteLine(" ║      3  Exit     ✈       ║");
+            Console.WriteLine(" ╙˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭˭╜");
 
             // Return the string of method "Options"
             Options(Console.ReadLine());
@@ -41,7 +41,8 @@ namespace ZombieGame
             switch (option)
             {
                 case "1":
-                    //game = new Game();
+                    Console.Clear();
+                    gameManager.GameLoop();
                     break;
 
                 case "2":
