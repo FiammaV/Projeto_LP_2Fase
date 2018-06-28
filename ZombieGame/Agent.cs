@@ -19,6 +19,5 @@ namespace ZombieGame {
         public Agent(AgentType agent)
         {
         }
-
     }
 }
