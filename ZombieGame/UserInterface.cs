@@ -9,18 +9,16 @@ namespace ZombieGame {
     /// It receives the output and the input
     /// </summary>
     public class UserInterface {
+        public UserInterface() { }
+
         // Renders the grid
         public void ShowWorld(IGameObject[,] grid) {
-            char state = ' ';
             for (int i = 0; i < grid.GetLength(0); i++) {
                 for (int j = 0; j < grid.GetLength(1); j++) {
-                    state = State(grid[i, j]);
-                    Console.Write(state);
-                    Console.Write("\t");
+                    Console.Write(State(grid[i, j]));
+                    Console.Write(" ");
                 }
-                Console.WriteLine("");
-                Console.WriteLine("");
-                Console.WriteLine("");
+                Console.WriteLine();
             }
         }
 
@@ -31,6 +29,12 @@ namespace ZombieGame {
             //Render the empties
             if (go is Empty) {
                 state = '.';
+            } else if (go is Agent) {
+                if ((go as Agent).Type == AgentType.Human) {
+                    state = 'H';
+                } else {
+                    state = 'Z';
+                }
             }
 
             return state;
