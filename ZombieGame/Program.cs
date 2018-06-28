@@ -14,8 +14,7 @@ namespace ZombieGame {
             Config c = new Config(args);
 
             GameManager game = new GameManager(c);
-
-        
+            game.GameLoop();
         }
     }
 }
