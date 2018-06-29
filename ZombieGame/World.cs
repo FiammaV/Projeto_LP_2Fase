@@ -6,6 +6,7 @@ namespace ZombieGame
     {
         public IGameObject[] agents;
         public IGameObject[,] Grid { get; set; }
+        public Agent currentAgent { get; set; }
         public int Row { get; set; }
         public int Column { get; set; }
         Random rnd;
