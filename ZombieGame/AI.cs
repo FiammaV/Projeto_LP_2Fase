@@ -29,73 +29,97 @@ namespace ZombieGame {
                     }
                 }
             }
-            VerifyNeighbours();
 
             agentIndex++;
             if (agentIndex >= world.agents.Length) {
                 agentIndex = 0;
             }
 
+            MoveAgents();
+
         }
 
-        private void VerifyNeighbours() {
-            // Verify for Humans
+        private void MoveAgents() {
+            Agent nearAgent;
 
-            if (currentAgent.Type == AgentType.Human) {
+            // Verify North
+            if (currentRow != 0) {
+                if (world.Grid[currentRow - 1, currentCol] is Agent) {
+                    nearAgent = (world.Grid[currentRow - 1, currentCol] as Agent);
+                    if (currentAgent.Type != nearAgent.Type && nearAgent.Type == AgentType.Zombie) {
+                        if (currentRow != world.Grid.GetLength(0)) {
+                            if (world.Grid[currentRow + 1, currentCol] is Empty) {
+                                world.Grid[currentRow + 1, currentCol] = currentAgent;
+                                world.Grid[currentRow, currentCol] = new Empty();
+                                return;
+                            }
+                        }
+                    }
+                    else if (currentAgent.Type != nearAgent.Type && nearAgent.Type == AgentType.Human) {
+                        nearAgent.Type = AgentType.Zombie;
+                        return;
+                    }
+                }
+            }
 
-                if (currentRow != 0) // Norte
-                {
-                    if (world.Grid[currentRow - 1, currentCol] is Empty) {
-                        world.Grid[currentRow - 1, currentCol] = currentAgent;
-                        world.Grid[currentRow, currentCol] = new Empty();
-                        return;
+            //Verify East
+            if (currentCol != world.Grid.GetLength(1)) {
+                if (world.Grid[currentRow, currentCol + 1] is Agent) {
+                    nearAgent = (world.Grid[currentRow, currentCol + 1] as Agent);
+                    if (currentAgent.Type != nearAgent.Type && nearAgent.Type == AgentType.Zombie) {
+                        if (currentCol != 0) {
+                            if (world.Grid[currentRow, currentCol - 1] is Empty) {
+                                world.Grid[currentRow, currentCol - 1] = currentAgent;
+                                world.Grid[currentRow, currentCol] = new Empty();
+                                return;
+                            }
+                        }
                     }
-                    else if ((world.Grid[currentRow - 1, currentCol] as Agent).Type == AgentType.Zombie) {
-                        world.Grid[currentRow + 1, currentCol] = currentAgent;
-                        world.Grid[currentRow, currentCol] = new Empty();
-                        return;
-                    }
-                }
-                if (currentCol != 0) // Oeste
-                {
-                    if (world.Grid[currentRow, currentCol - 1] is Empty) {
-                        world.Grid[currentRow, currentCol - 1] = currentAgent;
-                        world.Grid[currentRow, currentCol] = new Empty();
-                        return;
-                    }
-                    else if ((world.Grid[currentRow, currentCol - 1] as Agent).Type == AgentType.Zombie) {
-                        world.Grid[currentRow, currentCol + 1] = currentAgent;
-                        world.Grid[currentRow, currentCol] = new Empty();
+                    else if (currentAgent.Type != nearAgent.Type && nearAgent.Type == AgentType.Human) {
+                        nearAgent.Type = AgentType.Zombie;
                         return;
                     }
                 }
-                if (currentRow != c.Row) // Sul
-                {
-                    if (world.Grid[currentRow + 1, currentCol] is Empty) {
-                        world.Grid[currentRow + 1, currentCol] = currentAgent;
-                        world.Grid[currentRow, currentCol] = new Empty();
-                        return;
+            }
+
+            //Verify South
+            if (currentRow != world.Grid.GetLength(0)) {
+                if (world.Grid[currentRow + 1, currentCol] is Agent) {
+                    nearAgent = (world.Grid[currentRow + 1, currentCol] as Agent);
+                    if (currentAgent.Type != nearAgent.Type && nearAgent.Type == AgentType.Zombie) {
+                        if (currentRow != 0) {
+                            if (world.Grid[currentRow - 1, currentCol] is Empty) {
+                                world.Grid[currentRow - 1, currentCol] = currentAgent;
+                                world.Grid[currentRow, currentCol] = new Empty();
+                                return;
+                            }
+                        }
                     }
-                    else if ((world.Grid[currentRow + 1, currentCol] as Agent).Type == AgentType.Zombie) {
-                        world.Grid[currentRow - 1, currentCol] = currentAgent;
-                        world.Grid[currentRow, currentCol] = new Empty();
-                        return;
-                    }
-                }
-                if (currentCol != c.Column) // Este
-                {
-                    if (world.Grid[currentRow, currentCol + 1] is Empty) {
-                        world.Grid[currentRow, currentCol + 1] = currentAgent;
-                        world.Grid[currentRow, currentCol] = new Empty();
-                        return;
-                    }
-                    else if ((world.Grid[currentRow, currentCol + 1] as Agent).Type == AgentType.Zombie) {
-                        world.Grid[currentRow, currentCol - 1] = currentAgent;
-                        world.Grid[currentRow, currentCol] = new Empty();
+                    else if (currentAgent.Type != nearAgent.Type && nearAgent.Type == AgentType.Human) {
+                        nearAgent.Type = AgentType.Zombie;
                         return;
                     }
                 }
-                // Verify for zombies
+            }
+
+            //Verify West
+            if (currentCol != 0) {
+                if (world.Grid[currentRow, currentCol - 1] is Agent) {
+                    nearAgent = (world.Grid[currentRow, currentCol - 1] as Agent);
+                    if (currentAgent.Type != nearAgent.Type && nearAgent.Type == AgentType.Zombie) {
+                        if (currentCol != world.Grid.GetLength(1)) {
+                            if (world.Grid[currentRow, currentCol + 1] is Empty) {
+                                world.Grid[currentRow, currentCol + 1] = currentAgent;
+                                world.Grid[currentRow, currentCol] = new Empty();
+                                return;
+                            }
+                        }
+                    }
+                    else if (currentAgent.Type != nearAgent.Type && nearAgent.Type == AgentType.Human) {
+                        nearAgent.Type = AgentType.Zombie;
+                        return;
+                    }
+                }
             }
         }
     }
