@@ -8,11 +8,12 @@ namespace ZombieGame
         public IGameObject[,] Grid { get; set; }
         public int Row { get; set; }
         public int Column { get; set; }
-        Random rnd = new Random();
+        Random rnd;
         Config c;
 
-        public World(Config c)
+        public World(Config c, Random rnd)
         {
+            this.rnd = rnd;
             this.c = c;
 
             Grid = new IGameObject[c.Row, c.Column];
