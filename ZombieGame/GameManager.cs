@@ -12,7 +12,7 @@ namespace ZombieGame {
         private UserInterface it;
         private AI ai;
         private Playable playable;
-        private Agent currentAgent;
+        
 
         private int agentIndex = 0;
 
@@ -23,17 +23,17 @@ namespace ZombieGame {
             config = c;
             world = new World(c, rnd);
             it = new UserInterface();
-            ai = new AI(c, world, rnd, currentAgent);
-            playable = new Playable(world, currentAgent);
+            ai = new AI(c, world, rnd);
+            playable = new Playable(world, world.currentAgent);
         }
 
         public void GameLoop() {
             do {
-                currentAgent = (world.agents[agentIndex] as Agent);
+                world.currentAgent = (world.agents[agentIndex] as Agent);
 
                 it.ShowWorld(world.Grid);
-                if (currentAgent.Playable) {
-                    it.WhereToMove(currentAgent, world);
+                if (world.currentAgent.Playable) {
+                    it.WhereToMove(world.currentAgent, world);
                 } else {
                     ai.SearchAgent();
                 }
@@ -44,7 +44,7 @@ namespace ZombieGame {
                 }
 
                 // Update current Agent
-                ai = new AI(config, world, rnd, currentAgent);
+                ai = new AI(config, world, rnd);
 
                 Console.ReadKey();
             } while (2 != 3);
