@@ -147,7 +147,7 @@ namespace ZombieGame {
                     world.Grid[currentRow, currentCol] = new Empty();
                 }
             } else if (dir == 'y') {
-                if (world.Grid[currentRow, currentCol + side] is Empty) {
+                if (world.Grid[currentRow + side, currentCol] is Empty) {
                     world.Grid[currentRow + side, currentCol] = world.currentAgent;
                     world.Grid[currentRow, currentCol] = new Empty();
                 }
