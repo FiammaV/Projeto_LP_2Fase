@@ -4,40 +4,41 @@ namespace ZombieGame
 {
     public class World
     {
-        private IGameObject[] agents;
+        public IGameObject[] agents;
         public IGameObject[,] Grid { get; set; }
         public int Row { get; set; }
         public int Column { get; set; }
         Random rnd = new Random();
+        Config c;
 
         public World(Config c)
         {
-            agents = new IGameObject[c.InitialHumans + c.InitialZombies];
+            this.c = c;
 
             Grid = new IGameObject[c.Row, c.Column];
 
-            for (int i = 0; i < Grid.GetLength(0); i++)
-            {
-                for (int j = 0; j < Grid.GetLength(1); j++)
-                {
+            for (int i = 0; i < c.Row; i++) {
+                for (int j = 0; j < c.Column; j++) {
                     Grid[i, j] = new Empty();
                 }
             }
+            StartAgentsArray();
+        }
+
+        private void StartAgentsArray() {
+            agents = new IGameObject[c.InitialHumans + c.InitialZombies];
 
             // This for runs through the array of agents
-            for (int i = 0; i < c.InitialHumans; i++)
-            {
-                Agent a = new Agent(AgentType.Human);
-                agents[i] = a;
+            for (int i = 0; i < c.InitialHumans; i++) {
+                agents[i] = new Agent(AgentType.Human);
             }
-            for (int i = 0; i < c.InitialZombies; i++)
-            {
-                Agent a = new Agent(AgentType.Zombie);
-                agents[i + c.InitialHumans] = a;
+            for (int i = 0; i < c.InitialZombies; i++) {
+                agents[i + c.InitialHumans] = new Agent(AgentType.Zombie);
             }
-
-            Spawn(c);
+            Spawn();
+            Shuffle();
         }
+
         // Fisher Yates method
         public void Shuffle()
         {
@@ -49,7 +50,7 @@ namespace ZombieGame
             }
         }
 
-        public void Spawn(Config c) {
+        public void Spawn() {
             for (int i = 0; i < agents.Length; i++) {
                 do {
                     Row = rnd.Next(c.Row -1);
