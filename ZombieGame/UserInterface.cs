@@ -22,7 +22,6 @@ namespace ZombieGame {
                 Console.WriteLine();
             }
         }
-
         
         public char State(IGameObject go) {
             char state = ' ';
@@ -39,6 +38,10 @@ namespace ZombieGame {
             }
 
             return state;
+        }
+
+        public void WhereToMove(Agent currentAgent, World world) {
+
         }
     }
 }
