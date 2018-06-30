@@ -15,24 +15,6 @@ namespace ZombieGame {
             currentAgent = current;
         }
 
-        public void MoveNorth() {
-
-        }
-
-        public void MoveSouth() {
-
-        }
-
-        public void MoveEast() {
-
-        }
-
-        public void MoveWest() {
-
-        }
-
-        public void Infect() {
-
-        }
+        
     }
 }
