@@ -1,22 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ZombieGame {
     /// <summary>
     /// It receives the output and the input
     /// </summary>
     public class UserInterface {
-        public UserInterface() { }
 
+        private World world;
+        private int currentRow = 0;
+        private int currentCol = 0;
+        private bool playableAgent;
+
+        public UserInterface(World world) {
+            this.world = world;
+        }
+        
         // Renders the grid
-        public void ShowWorld(IGameObject[,] grid) {
+        public void ShowWorld(IGameObject[,] grid, Agent currentAgent) {
             Console.Clear();
             for (int i = 0; i < grid.GetLength(0); i++) {
                 for (int j = 0; j < grid.GetLength(1); j++) {
+
+                    if(grid[i, j] == currentAgent) {
+                        playableAgent = true;
+                        currentRow = i;
+                        currentCol = j;
+                    } else {
+                        playableAgent = false;
+                    }
+
                     Console.Write(State(grid[i, j]));
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.Write(" ");
                 }
                 Console.WriteLine();
@@ -31,12 +45,30 @@ namespace ZombieGame {
                 state = '.';
             }
             else if (go is Agent) {
-                if ((go as Agent).Type == AgentType.Human) {
-                    state = 'H';
+
+                if ((go as Agent).Playable) {
+                    if ((go as Agent).Type == AgentType.Human) {
+                        state = 'H';
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                    else {
+                        state = 'Z';
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    }
                 }
                 else {
-                    state = 'Z';
+                    if ((go as Agent).Type == AgentType.Human) {
+                        state = 'h';
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                    }
+                    else {
+                        state = 'z';
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                    }
                 }
+            }
+            if (playableAgent) {
+                Console.ForegroundColor = ConsoleColor.Yellow;
             }
 
             return state;
@@ -47,49 +79,79 @@ namespace ZombieGame {
             int currentCol = 0;
             for (int i = 0; i < world.Grid.GetLength(0); i++) {
                 for (int j = 0; j < world.Grid.GetLength(1); j++) {
-                    if (world.Grid[i,j] == currentAgent) {
+                    if (world.Grid[i, j] == currentAgent) {
                         currentRow = i;
                         currentCol = j;
                     }
                 }
             }
 
-            Console.WriteLine("\t * Next player: ");
+            Console.WriteLine();
+            Console.WriteLine("\t* Current player: " + currentAgent);
+            Console.WriteLine();
 
-            if (world.Grid[currentRow - 1, currentCol] is Empty) {
-                Console.WriteLine("At North the path is free");
-            } else {
-                Console.WriteLine("At North there's: {0}", world.Grid[currentRow - 1, currentCol]);
-            }
-
-            if (world.Grid[currentRow, currentCol - 1] is Empty) {
-                Console.WriteLine("At East the path is free");
-            }
-            else {
-                Console.WriteLine("At East there's: {0}", world.Grid[currentRow, currentCol - 1]);
+            if (currentRow != 0) {
+                if (world.Grid[currentRow - 1, currentCol] is Empty) {
+                    Console.WriteLine("At North the path is free.");
+                }
+                else {
+                    Console.WriteLine("At North there's a {0}.", (world.Grid[currentRow - 1, currentCol] as Agent));
+                }
             }
 
-            if (world.Grid[currentRow + 1, currentCol] is Empty) {
-                Console.WriteLine("At South the path is free");
-            }
-            else {
-                Console.WriteLine("At South there's: {0}", world.Grid[currentRow + 1, currentCol]);
-            }
-
-            if (world.Grid[currentRow, currentCol + 1] is Empty) {
-                Console.WriteLine("At West the path is free");
-            }
-            else {
-                Console.WriteLine("At West there's: {0}", world.Grid[currentRow, currentCol + 1]);
+            if (currentCol != 0) {
+                if (world.Grid[currentRow, currentCol - 1] is Empty) {
+                    Console.WriteLine("At East the path is free.");
+                }
+                else {
+                    Console.WriteLine("At East there's a {0}.", (world.Grid[currentRow, currentCol - 1] as Agent));
+                }
             }
 
+            if (currentRow != world.Grid.GetLength(0) - 1) {
+                if (world.Grid[currentRow + 1, currentCol] is Empty) {
+                    Console.WriteLine("At South the path is free.");
+                }
+                else {
+                    Console.WriteLine("At South there's a {0}.", (world.Grid[currentRow + 1, currentCol] as Agent));
+                }
+            }
 
-            //            *Proximo a jogar: H00
-            // - A Norte existe o zombie 01(IA).
-            // - A Sul existe o humano 02(IA).
-            // - A Oeste o caminho está livre.
-            // - A Leste o caminho está livre.
-            //* Qual o caminho a seguir? A(oeste) ou D(leste) >
+            if (currentCol != world.Grid.GetLength(1) - 1) {
+                if (world.Grid[currentRow, currentCol + 1] is Empty) {
+                    Console.WriteLine("At West the path is free.");
+                }
+                else {
+                    Console.WriteLine("At West there's a {0}.", (world.Grid[currentRow, currentCol + 1] as Agent));
+                }
+            }
+
+            MovePlayer();
+            Console.WriteLine();
+        }
+
+        public void MovePlayer() {
+            string key = Console.ReadLine();
+
+            if(key == "w") {
+                world.Grid[currentRow - 1, currentCol] = world.currentAgent;
+                world.Grid[currentRow, currentCol] = new Empty();
+            }
+
+            if (key == "d") {
+                world.Grid[currentRow, currentCol + 1] = world.currentAgent;
+                world.Grid[currentRow, currentCol] = new Empty();
+            }
+
+            if (key == "s") {
+                world.Grid[currentRow + 1, currentCol] = world.currentAgent;
+                world.Grid[currentRow, currentCol] = new Empty();
+            }
+
+            if (key == "a") {
+                world.Grid[currentRow, currentCol - 1] = world.currentAgent;
+                world.Grid[currentRow, currentCol] = new Empty();
+            }
         }
     }
 }

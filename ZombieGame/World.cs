@@ -1,9 +1,7 @@
 ﻿using System;
 
-namespace ZombieGame
-{
-    public class World
-    {
+namespace ZombieGame {
+    public class World {
         public IGameObject[] agents;
         public IGameObject[,] Grid { get; set; }
         public Agent currentAgent { get; set; }
@@ -12,8 +10,7 @@ namespace ZombieGame
         Random rnd;
         Config c;
 
-        public World(Config c, Random rnd)
-        {
+        public World(Config c, Random rnd) {
             this.rnd = rnd;
             this.c = c;
 
@@ -33,17 +30,24 @@ namespace ZombieGame
             // This for runs through the array of agents
             for (int i = 0; i < c.InitialHumans; i++) {
                 agents[i] = new Agent(AgentType.Human);
+
+                if (i < c.ControlHumans) {
+                    (agents[i] as Agent).Playable = true;
+                }
             }
             for (int i = 0; i < c.InitialZombies; i++) {
                 agents[i + c.InitialHumans] = new Agent(AgentType.Zombie);
+
+                if (i < c.ControlZombies) {
+                    (agents[i + c.InitialHumans] as Agent).Playable = true;
+                }
             }
             Spawn();
             Shuffle();
         }
 
         // Fisher Yates method
-        public void Shuffle()
-        {
+        public void Shuffle() {
             for (int i = agents.Length - 1; i > 0; i--) {
                 int j = rnd.Next(i + 1);
                 Agent temp = (Agent)agents[i];
@@ -55,11 +59,11 @@ namespace ZombieGame
         public void Spawn() {
             for (int i = 0; i < agents.Length; i++) {
                 do {
-                    Row = rnd.Next(c.Row -1);
-                    Column = rnd.Next(c.Column -1);
+                    Row = rnd.Next(c.Row - 1);
+                    Column = rnd.Next(c.Column - 1);
                 } while (Grid[Row, Column] is Agent);
 
-                    Grid[Row, Column] = agents[i];
+                Grid[Row, Column] = agents[i];
             }
         }
     }

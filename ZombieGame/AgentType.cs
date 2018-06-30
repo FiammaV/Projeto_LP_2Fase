@@ -3,8 +3,13 @@
     /// Enumeration of agents
     /// </summary>
     public enum AgentType {
-        // There will be two types of agent
+        /// <summary>
+        /// Human
+        /// </summary>
         Human,
+        /// <summary>
+        /// Zombie
+        /// </summary>
         Zombie
     }
 }

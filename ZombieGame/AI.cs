@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ZombieGame {
     class AI {
+        // Creates a variable that will keep the world
         private World world;
+        // Creates
         private Random rnd;
         private Config c;
         private int currentRow = 0;
