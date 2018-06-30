@@ -36,9 +36,9 @@ namespace ZombieGame {
             string type = "";
 
             if(Type == AgentType.Human) {
-                type = "Human";
+                type = "Human '\u2663'";
             } else if (Type == AgentType.Zombie) {
-                type = "Zombie";
+                type = "Zombie '\u25B2'";
             }
 
             return type;
