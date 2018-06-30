@@ -22,7 +22,7 @@ namespace ZombieGame {
         public GameManager(Config c) {
             config = c;
             world = new World(c, rnd);
-            it = new UserInterface();
+            it = new UserInterface(world);
             ai = new AI(c, world, rnd);
             playable = new Playable(world, world.currentAgent);
         }
@@ -31,7 +31,7 @@ namespace ZombieGame {
             do {
                 world.currentAgent = (world.agents[agentIndex] as Agent);
 
-                it.ShowWorld(world.Grid);
+                it.ShowWorld(world.Grid, world.currentAgent);
                 if (world.currentAgent.Playable) {
                     it.WhereToMove(world.currentAgent, world);
                 } else {
