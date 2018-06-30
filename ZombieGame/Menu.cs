@@ -74,20 +74,18 @@ namespace ZombieGame
         /// </summary>
         public void Rules()
         {
-
             Console.Clear();
-            Console.WriteLine(" ╓━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╖");
-            Console.WriteLine(" ║                    Rules                                           ║");
-            Console.WriteLine(" ║━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━║");
-            Console.WriteLine(" ║   Agent    ║   Color   ║   Current Player   ║   Controled Player   ║");
-            Console.WriteLine(" ║━━━━━━━━━━━━║━━━━━━━━━━━║━━━━━━━━━━━━━━━━━━━━║━━━━━━━━━━━━━━━━━━━━━━║");
-            Console.WriteLine(" ║   Human    ║   Green   ║                    ║                      ║");
-            Console.WriteLine(" ║━━━━━━━━━━━━║━━━━━━━━━━━║       Yellow       ║━━━━━━━━━━━━━━━━━━━━━━║");
-            Console.WriteLine(" ║   Zombie   ║    Red    ║                    ║                      ║");
-            Console.WriteLine(" ╙━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╜");
+            Console.WriteLine("╓━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╖");
+            Console.WriteLine("║                                Rules                                ║");
+            Console.WriteLine("║━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━║");
+            Console.WriteLine("║   Agent    ║   Color   ║   Current Player   ║   Controlled Player   ║");
+            Console.WriteLine("║━━━━━━━━━━━━║━━━━━━━━━━━║━━━━━━━━━━━━━━━━━━━━║━━━━━━━━━━━━━━━━━━━━━━━║");
+            Console.WriteLine("║   Human    ║   Green   ║                    ║         Blue          ║");
+            Console.WriteLine("║━━━━━━━━━━━━║━━━━━━━━━━━║       Yellow       ║━━━━━━━━━━━━━━━━━━━━━━━║");
+            Console.WriteLine("║   Zombie   ║    Red    ║                    ║        Magenta        ║");
+            Console.WriteLine("╙━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╜");
             Console.WriteLine("  ");
             Console.ReadKey();
-
         }
         /// <summary>
         /// Draw's info of Credits
