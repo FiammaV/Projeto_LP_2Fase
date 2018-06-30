@@ -48,21 +48,25 @@ namespace ZombieGame {
 
                 if ((go as Agent).Playable) {
                     if ((go as Agent).Type == AgentType.Human) {
-                        state = 'H';
+                        // Human
+                        state = '\u2663';
                         Console.ForegroundColor = ConsoleColor.Green;
                     }
                     else {
-                        state = 'Z';
+                        // Zombie
+                        state = '\u25B2';
                         Console.ForegroundColor = ConsoleColor.Red;
                     }
                 }
                 else {
                     if ((go as Agent).Type == AgentType.Human) {
-                        state = 'h';
+                        // Human
+                        state = '\u2663';
                         Console.ForegroundColor = ConsoleColor.Blue;
                     }
                     else {
-                        state = 'z';
+                        // Zombie
+                        state = '\u25B2';
                         Console.ForegroundColor = ConsoleColor.Magenta;
                     }
                 }
