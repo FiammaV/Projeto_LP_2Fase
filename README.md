@@ -1,4 +1,4 @@
-# Simplexity
+# Zombie Game
 
 ## Who did this project?
 
