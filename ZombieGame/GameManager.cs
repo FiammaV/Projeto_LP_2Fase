@@ -47,6 +47,7 @@ namespace ZombieGame {
                 ai = new AI(config, world, rnd);
 
                 Console.ReadKey();
+                // V ALTERAR ISTO V
             } while (2 != 3);
         }
     }
