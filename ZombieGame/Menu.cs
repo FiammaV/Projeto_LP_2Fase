@@ -14,8 +14,6 @@ namespace ZombieGame
         // Declaration of the game
         private GameManager gameManager;
 
-        private Config c;
-
         /// <summary>
         /// Contructor iniciates the game (nao devolve nada MAS pode receber se tiveres cenas entre parentises)
         /// </summary>
