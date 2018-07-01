@@ -68,7 +68,7 @@ has reached the maximum amount of turns and when all the humans have been infect
 
 ### UML Diagram
 
-![UML Diagram](https://i.imgur.com/doiZ7N3.png)
+![UML Diagram](https://i.imgur.com/FZkmJOh.png)
 
 ### Fluxogram
 
