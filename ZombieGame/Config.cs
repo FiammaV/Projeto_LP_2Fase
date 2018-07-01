@@ -1,23 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ZombieGame {
+    /// <summary>
+    /// Class that gets the value of the arguments of the console and sets up
+    /// the properties accordingly
+    /// </summary>
     public class Config {
         /// <summary>
-        /// Proprieties of each argument
+        /// Properties of each argument
         /// </summary>
-        public int InitialHumans { get; }
+        public int InitialHumans { get; set; }
         public int InitialZombies { get; }
         public int Row { get; }
         public int Column { get; }
         public int ControlHumans { get; }
         public int ControlZombies { get; }
         public int MaxT { get; }
-        //public string[] args = new string[] { "-x", "8", "-y", "8", "-h", "2",
-        //    "-z", "20", "-H", "1", "-Z", "1", "-t", "1000" };
 
         public Config(string[] args) {
             // A for that will run through the arguments' array
