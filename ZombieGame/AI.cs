@@ -11,6 +11,7 @@ namespace ZombieGame {
         // Creates
         private Random rnd;
         private Config c;
+        private int totalZombies = 0;
         private int currentRow = 0;
         private int currentCol = 0;
 
@@ -35,6 +36,14 @@ namespace ZombieGame {
 
         private void MoveAgents() {
             Agent nearAgent;
+            totalZombies = 0;
+            for (int i = 0; i < world.agents.Length; i++)
+            {
+                if ((world.agents[i] as Agent).Type == AgentType.Zombie)
+                {
+                    totalZombies++;
+                }
+            }
 
             // Verify North
             if (currentRow != 0) {
@@ -51,6 +60,7 @@ namespace ZombieGame {
                     }
                     else if (world.currentAgent.Type != nearAgent.Type && nearAgent.Type == AgentType.Human) {
                         nearAgent.Type = AgentType.Zombie;
+                        nearAgent.Index = totalZombies;
                         return;
                     }
                 }
@@ -71,6 +81,7 @@ namespace ZombieGame {
                     }
                     else if (world.currentAgent.Type != nearAgent.Type && nearAgent.Type == AgentType.Human) {
                         nearAgent.Type = AgentType.Zombie;
+                        nearAgent.Index = totalZombies;
                         return;
                     }
                 }
@@ -91,6 +102,7 @@ namespace ZombieGame {
                     }
                     else if (world.currentAgent.Type != nearAgent.Type && nearAgent.Type == AgentType.Human) {
                         nearAgent.Type = AgentType.Zombie;
+                        nearAgent.Index = totalZombies;
                         return;
                     }
                 }
@@ -111,6 +123,7 @@ namespace ZombieGame {
                     }
                     else if (world.currentAgent.Type != nearAgent.Type && nearAgent.Type == AgentType.Human) {
                         nearAgent.Type = AgentType.Zombie;
+                        nearAgent.Index = totalZombies;
                         return;
                     }
                 }
