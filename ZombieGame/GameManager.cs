@@ -1,35 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ZombieGame {
+    /// <summary>
+    /// Class that does the gameloop
+    /// </summary>
     public class GameManager {
+        // Created a new random
         Random rnd = new Random();
+        // Initialization of the other classes
         private Config config;
         private World world;
         private UserInterface it;
         private AI ai;
-        private Playable playable;
-        
-
+        // Variables initiated at one and zero
+        private int currentTurn = 1;
         private int agentIndex = 0;
 
-        public int MaxT { get; }
-
-        //construtor 
+        // Construtor of the class
         public GameManager(Config c) {
             config = c;
+            // Created the world, userinterface and AI
             world = new World(c, rnd);
-            it = new UserInterface(world);
+            it = new UserInterface(world, c);
             ai = new AI(c, world, rnd);
-            playable = new Playable(world, world.currentAgent);
         }
 
+        /// <summary>
+        /// Method that will keep looping the game until the while condition is met
+        /// </summary>
         public void GameLoop() {
             do {
                 world.currentAgent = (world.agents[agentIndex] as Agent);
+                currentTurn++;
 
                 it.ShowWorld(world.Grid, world.currentAgent);
                 if (world.currentAgent.Playable) {
@@ -42,13 +44,12 @@ namespace ZombieGame {
                 if (agentIndex >= world.agents.Length) {
                     agentIndex = 0;
                 }
-
-                // Update current Agent
-                ai = new AI(config, world, rnd);
-
+                
                 Console.ReadKey();
-                // V ALTERAR ISTO V
-            } while (2 != 3);
+
+                // Ends the game when it reaches the max turns and there's no more
+                // humans
+            } while (currentTurn <= config.MaxT && config.InitialHumans > 0);
         }
     }
 }
