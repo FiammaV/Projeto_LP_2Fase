@@ -29,17 +29,17 @@ namespace ZombieGame {
 
             // This for runs through the array of agents
             for (int i = 0; i < c.InitialHumans; i++) {
-                agents[i] = new Agent(AgentType.Human);
+                agents[i] = new Agent(AgentType.Human, i);
 
                 if (i < c.ControlHumans) {
                     (agents[i] as Agent).Playable = true;
                 }
             }
             for (int i = 0; i < c.InitialZombies; i++) {
-                agents[i + c.InitialHumans] = new Agent(AgentType.Zombie);
+                agents[i + c.InitialHumans] = new Agent(AgentType.Zombie, i);
 
                 if (i < c.ControlZombies) {
-                    (agents[i + c.InitialHumans] as Agent).Playable = true;
+                    (agents[i + c.InitialHumans] as Agent).Playable = true ;
                 }
             }
             Spawn();

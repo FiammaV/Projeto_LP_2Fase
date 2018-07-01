@@ -10,6 +10,7 @@ namespace ZombieGame {
         private int currentRow = 0;
         private int currentCol = 0;
         private bool playableAgent;
+        private int totalZombies = 0;
 
         private string north = "";
         private string south = "";
@@ -28,8 +29,17 @@ namespace ZombieGame {
         // Renders the grid
         public void ShowWorld(IGameObject[,] grid, Agent currentAgent) {
             Console.Clear();
+            totalZombies = 0;
+
             for (int i = 0; i < grid.GetLength(0); i++) {
                 for (int j = 0; j < grid.GetLength(1); j++) {
+                    if (grid[i, j] is Agent)
+                    {
+                        if ((grid[i, j] as Agent).Type == AgentType.Zombie)
+                        {
+                            totalZombies++;
+                        }
+                    }
 
                     if(grid[i, j] == currentAgent) {
                         playableAgent = true;
@@ -47,36 +57,36 @@ namespace ZombieGame {
             }
         }
 
-        public char State(IGameObject go) {
-            char state = ' ';
+        public string State(IGameObject go) {
+            string state = " ";
 
             //Render the empties
             if (go is Empty) {
-                state = '.';
+                state = " . ";
             }
             else if (go is Agent) {
 
                 if ((go as Agent).Playable) {
                     if ((go as Agent).Type == AgentType.Human) {
                         // Human
-                        state = '\u2663';
+                        state = string.Format("\u2663{0:d2}", (go as Agent).Index);
                         Console.ForegroundColor = ConsoleColor.Green;
                     }
                     else {
                         // Zombie
-                        state = '\u25B2';
+                        state = string.Format("\u25B2{0:d2}", (go as Agent).Index);
                         Console.ForegroundColor = ConsoleColor.Red;
                     }
                 }
                 else {
                     if ((go as Agent).Type == AgentType.Human) {
                         // Human
-                        state = '\u2663';
+                        state = string.Format("\u2663{0:d2}", (go as Agent).Index);
                         Console.ForegroundColor = ConsoleColor.Blue;
                     }
                     else {
                         // Zombie
-                        state = '\u25B2';
+                        state = string.Format("\u25B2{0:d2}", (go as Agent).Index);
                         Console.ForegroundColor = ConsoleColor.Magenta;
                     }
                 }
@@ -203,6 +213,7 @@ namespace ZombieGame {
             if((key == "w" || key == "W") && north != "") {
                 if (zNorth) {
                     (world.Grid[currentRow - 1, currentCol] as Agent).Type = AgentType.Zombie;
+                    (world.Grid[currentRow - 1, currentCol] as Agent).Index = totalZombies;
                 } else {
                     world.Grid[currentRow - 1, currentCol] = world.currentAgent;
                     world.Grid[currentRow, currentCol] = new Empty();
@@ -212,6 +223,7 @@ namespace ZombieGame {
             if ((key == "d" || key == "D") && east != "") {
                 if (zEast) {
                     (world.Grid[currentRow, currentCol +1] as Agent).Type = AgentType.Zombie;
+                    (world.Grid[currentRow, currentCol + 1] as Agent).Index = totalZombies;
                 }
                 else {
                     world.Grid[currentRow, currentCol + 1] = world.currentAgent;
@@ -222,6 +234,7 @@ namespace ZombieGame {
             if ((key == "s" || key == "S") && south != "") {
                 if (zSouth) {
                     (world.Grid[currentRow + 1, currentCol] as Agent).Type = AgentType.Zombie;
+                    (world.Grid[currentRow + 1, currentCol] as Agent).Index = totalZombies;
                 }
                 else {
                     world.Grid[currentRow + 1, currentCol] = world.currentAgent;
@@ -232,6 +245,7 @@ namespace ZombieGame {
             if ((key == "a" || key == "A") && west != "") {
                 if (zWest) {
                     (world.Grid[currentRow, currentCol - 1] as Agent).Type = AgentType.Zombie;
+                    (world.Grid[currentRow, currentCol - 1] as Agent).Index = totalZombies;
                 }
                 else {
                     world.Grid[currentRow, currentCol -1] = world.currentAgent;
