@@ -15,7 +15,7 @@ namespace ZombieGame {
             Config c = new Config(args);
 
             // Declaration/ initiate the menu
-            Menu menu = new Menu(c);
+            Menu menu = new Menu(args);
 
             // Initiate DrawMenu
             menu.DrawMenu();

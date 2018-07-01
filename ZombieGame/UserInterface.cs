@@ -34,8 +34,12 @@ namespace ZombieGame {
             this.world = world;
             this.c = c;
         }
-        
-        // Method that renders the grid
+
+        /// <summary>
+        /// Method that renders the grid
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="currentAgent"></param>
         public void ShowWorld(IGameObject[,] grid, Agent currentAgent) {
             Console.Clear();
             totalZombies = 0;

@@ -5,7 +5,9 @@ namespace ZombieGame {
     /// Class for the world
     /// </summary>
     public class World {
-        // Arrays for the world and the agents
+        /// <summary>
+        /// Arrays for the world and the agents
+        /// </summary>
         public IGameObject[] agents;
         /// <summary>
         /// Properties for the array

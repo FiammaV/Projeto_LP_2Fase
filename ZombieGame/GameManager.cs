@@ -16,7 +16,10 @@ namespace ZombieGame {
         private int currentTurn = 1;
         private int agentIndex = 0;
 
-        // Construtor of the class
+        /// <summary>
+        /// Construtor of the class
+        /// </summary>
+        /// <param name="c"></param>
         public GameManager(Config c) {
             config = c;
             // Created the world, userinterface and AI
