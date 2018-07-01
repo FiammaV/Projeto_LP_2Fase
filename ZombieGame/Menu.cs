@@ -14,7 +14,7 @@ namespace ZombieGame {
         /// <summary>
         /// Contructor of the menu
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="args"></param>
         public Menu(string[] args) {
             this.args = args;
         }

@@ -20,6 +20,7 @@
         /// Construtor of the class
         /// </summary>
         /// <param name="agent"></param>
+        /// <param name="index"></param>
         public Agent(AgentType agent, int index)
         {
             Type = agent;
