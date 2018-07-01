@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ZombieGame {
+﻿namespace ZombieGame {
+    /// <summary>
+    /// Class responsible for the agents
+    /// </summary>
     public class Agent : IGameObject {
-       /// <summary>
-       ///  Column of the grid
-       /// </summary>
-        public int Column { get; }
-        /// <summary>
-        /// Row of the grid
-        /// </summary>
-        public int Row { get; }
         /// <summary>
         /// Enumeration of agents types
         /// </summary>
@@ -26,8 +15,9 @@ namespace ZombieGame {
         /// Index to indentify agents
         /// </summary>
         public int Index { get; set; }
+
         /// <summary>
-        /// Initializes a new instance of the AgentType class
+        /// Construtor of the class
         /// </summary>
         /// <param name="agent"></param>
         public Agent(AgentType agent, int index)
@@ -36,6 +26,11 @@ namespace ZombieGame {
             Index = index;
         }
 
+        /// <summary>
+        /// Override of the method ToString() to write the name of the agent
+        /// the way we want it
+        /// </summary>
+        /// <returns></returns>
         public override string ToString() {
             string type = "";
 

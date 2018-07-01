@@ -1,32 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ZombieGame
-{
+namespace ZombieGame {
     /// <summary>
-    /// Construction of the game
+    /// Class that draws the menu
     /// </summary>
-    class Menu
-    {
-        // Declaration of the game
+    class Menu {
+        // Initialization of the other classes
         private GameManager gameManager;
+        private Config c;
+        // Array of strings
+        private string[] args;
 
         /// <summary>
-        /// Contructor iniciates the game (nao devolve nada MAS pode receber se tiveres cenas entre parentises)
+        /// Contructor of the menu
         /// </summary>
         /// <param name="c"></param>
-        public Menu(Config c)
-        {
-            gameManager = new GameManager(c);
+        public Menu(string[] args) {
+            this.args = args;
         }
         /// <summary>
-        /// Draw's info of DrawMenu
+        /// Method that draws the menu
         /// </summary>
-        public void DrawMenu()
-        {
+        public void DrawMenu() {
             // Clear console
             Console.Clear();
             Console.WriteLine(" ╓━━━━━━━━━━━━━━━━━━━━━━━━╖");
@@ -38,18 +33,19 @@ namespace ZombieGame
             Console.WriteLine(" ║       4  Exit          ║");
             Console.WriteLine(" ╙━━━━━━━━━━━━━━━━━━━━━━━━╜");
 
-            // Return the string of method "Options"
+            // Returns the string of the method "Options"
             Options(Console.ReadLine());
         }
+
         /// <summary>
-        /// Read input of player
+        /// Reads input of the player
         /// </summary>
         /// <param name="option"></param>
-        private void Options(string option)
-        {
-            switch (option)
-            {
+        private void Options(string option) {
+            switch (option) {
                 case "1":
+                    c = new Config(args);
+                    gameManager = new GameManager(c);
                     Console.Clear();
                     gameManager.GameLoop();
                     break;
@@ -68,10 +64,9 @@ namespace ZombieGame
             DrawMenu();
         }
         /// <summary>
-        /// Draw's info of Rules
+        /// Method that draws info of the rules
         /// </summary>
-        public void Rules()
-        {
+        public void Rules() {
             Console.Clear();
             Console.WriteLine("╓━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╖");
             Console.WriteLine("║                                Rules                                ║");
@@ -86,10 +81,9 @@ namespace ZombieGame
             Console.ReadKey();
         }
         /// <summary>
-        /// Draw's info of Credits
+        /// Method that draws info of Credits
         /// </summary>
-        public void Credits()
-        {
+        public void Credits() {
             Console.Clear();
             Console.WriteLine(" ╓━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╖");
             Console.WriteLine(" ║              Credits            ║");
