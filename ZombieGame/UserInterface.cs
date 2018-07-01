@@ -175,7 +175,7 @@ namespace ZombieGame {
                     Console.WriteLine("\t- At East there's a {0}.", (world.Grid[currentRow, currentCol + 1] as Agent));
                     if (currentAgent.Type == AgentType.Zombie && currentAgent.Type !=
                         (world.Grid[currentRow, currentCol + 1] as Agent).Type) {
-                        east = "";
+                        east = "D (east)";
                         zEast = true;
                     } else {
                         east = "";
